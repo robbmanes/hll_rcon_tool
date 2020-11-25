@@ -25,6 +25,7 @@ from rcon.player_history import (
     add_flag_to_player,
     remove_flag,
 )
+from rcon.utils import LONG_HUMAN_MAP_NAMES, SHORT_HUMAN_MAP_NAMES
 from rcon.user_config import AutoBroadcasts, InvalidConfigurationError, StandardMessages
 from rcon.cache_utils import RedisCached, get_redis_pool
 from .auth import login_required, api_response
@@ -42,12 +43,17 @@ def get_map_history(request):
         res = [
             dict(
                 name=i["name"],
+                start_timestamp=int(i["start"]) if i["start"] else None,
+                end_timestamp=int(i["end"]) if i["end"] else None,
                 start=datetime.datetime.fromtimestamp(i["start"]).isoformat()
                 if i["start"]
                 else None,
                 end=datetime.datetime.fromtimestamp(i["end"]).isoformat()
                 if i["end"]
                 else None,
+                duration_minutes='N/A' if not all([i["start"], i["end"]]) else round((i["end"] - i["start"]) / 60),
+                long_name=LONG_HUMAN_MAP_NAMES.get(i["name"], i["name"]),
+                short_name=SHORT_HUMAN_MAP_NAMES.get(i["name"], i["name"]),
             )
             for i in res
         ]

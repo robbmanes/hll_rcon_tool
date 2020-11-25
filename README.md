@@ -292,6 +292,7 @@ It is not best practice to have endpoints that do write operations accept a GET 
 
 The GUI should now be available on http://localhost:3000/ it auto refreshes on code changes
 
+You must disablethe SAMESITE restriction if using chrome for development: https://support.siteimprove.com/hc/en-gb/articles/360007364778-Turning-off-Google-Chrome-SameSite-Cookie-Enforcement
 
 #### To test your changes will work with the prod setup, start the whole stack 
 

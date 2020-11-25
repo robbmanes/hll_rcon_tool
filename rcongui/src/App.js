@@ -19,7 +19,7 @@ import PlayersHistory from "./components/PlayersHistory";
 import Header, { Footer } from "./components/Header";
 import RconSettings from './components/RconSettings';
 import {pink, red} from '@material-ui/core/colors';
-
+import Stats from './components/Stats';
 
 const Live = ({ classes }) => (
   <Grid container spacing={1}>
@@ -102,6 +102,13 @@ function App() {
                 <Grid item sm={12} lg={6}>
                   <RconSettings classes={classes} />
                 </Grid>
+              </Grid>
+            </Route>
+            <Route path='/stats'>
+            <Grid container>
+                <Grid item sm={12} lg={12}>
+                  <Stats classes={classes} />
+                 </Grid>
               </Grid>
             </Route>
           </Switch>

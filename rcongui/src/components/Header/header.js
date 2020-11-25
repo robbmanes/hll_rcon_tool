@@ -196,6 +196,15 @@ export default ({ classes, setSaveDark, dark }) => {
                         color="inherit"
                         className={classes.link}
                         component={RouterLink}
+                        to="/stats"
+                      >
+                        Stats
+                      </Link>
+                      <Link
+                        variant="button"
+                        color="inherit"
+                        className={classes.link}
+                        component={RouterLink}
                         to="/settings"
                       >
                         Settings
